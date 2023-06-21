@@ -19,6 +19,12 @@ const prompt = inquirer.createPromptModule();
             type:'input',
             name:'hexCode',
             message:'Enter valid hex code'
+        },
+        {
+            type: 'input',
+            name: 'textColor',
+            message: 'Please enter a color for the text',
+            choices: ['name']
         }
     ])
     .then(({hexCode, text, colorType}) => {
@@ -34,12 +40,12 @@ const prompt = inquirer.createPromptModule();
 
                         break;
                     case 'square':
-                        const square = new Square()
+                        const square = new Square(text, colorType, hexCode)
                         let str2 = square.render()
 
                         break;
                     case 'triangle':
-                        const triangle = new Triangle()
+                        const triangle = new Triangle(text, colorType, hexCode)
                         let str3 = triangle.render()
 
                         break;
